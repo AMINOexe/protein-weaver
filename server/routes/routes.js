@@ -15,6 +15,9 @@ import AllShortestPathsService from "../services/dijkstra.all.service.js";
 import ProteinFinderService from "../services/protein.finder.service.js";
 import GoFinderService from "../services/go.finder.service.js";
 import AvgDegreeService from "../services/avg.degree.service.js";
+import HighDegreeProteins from "../services/API_test.js";
+import PostTst from "../services/API_Post.js";
+
 const router = new Router();
 const jsonParser = bodyParser.json();
 
@@ -31,6 +34,40 @@ router.get("/getNetwork", async (res, next) => {
 
     res.json(network);
   } catch (e) {
+    next(e);
+  }
+});
+
+
+router.get("/API_test", jsonParser, async (req, res, next) => {
+  try {
+    const tst = new HighDegreeProteins(getDriver());
+
+    const degrees = await tst.getHighDegreeProteins();
+    console.log("Degree:");
+    console.log(degrees);
+
+    res.json(degrees);
+  }
+  catch (e) {
+    next(e);
+  }
+});
+
+
+router.post("/API_Post", jsonParser, async (req, res, next) => {
+  try {
+    const data = req.body;
+    const k = data.k
+    const tst = new PostTst(getDriver());
+
+    const degrees = await tst.MakePostTst(k);
+    console.log("Degree:");
+    console.log(degrees);
+
+    res.json(degrees);
+  }
+  catch (e) {
     next(e);
   }
 });
