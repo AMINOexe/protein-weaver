@@ -1482,3 +1482,14 @@ select {
   list-style: none;
   text-align: right;
 }
+
+.new-query-form {
+  display:flex;
+  flex-direction: row;
+}
+
+.new-query-label {
+  background-color: white;
+  color: black;
+  font-size: x-large;
+}

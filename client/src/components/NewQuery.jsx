@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 export default function NewQuery() {
     // create empty object to store query results
     const [nodeNames, setNodeNames] = useState([]);
+    const [val, setVal] = useState();
 
     // execute query on page reload
     async function handleNewQuery(e) {
@@ -17,7 +18,7 @@ export default function NewQuery() {
             },
             body: JSON.stringify({
                 // Example of json body request. need to match your POST request's parameters
-                k: 150
+                k: val
             }),
         })
             .then((res) => res.json())
@@ -37,6 +38,16 @@ export default function NewQuery() {
 
     return (
         <div>
+            <div className="new-query-form">
+                <p className="new-query-label">Enter K Value: </p>
+                <form>
+                    <input
+                        type="text"
+                        value={val}
+                        onChange={(e) => setVal(e.target.value)}
+                    />
+                </form>
+            </div>
             <button onClick={handleNewQuery}>New Query</button>
             {
                 nodeNames.map((name, index) => (
