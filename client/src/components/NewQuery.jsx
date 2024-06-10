@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 export default function NewQuery() {
     // create empty object to store query results
     const [nodeNames, setNodeNames] = useState([]);
-    const [val, setVal] = useState();
+    const [val, setVal] = useState([]);
 
     // execute query on page reload
     async function handleNewQuery(e) {
@@ -33,8 +33,16 @@ export default function NewQuery() {
 
         return;
     }
+
+    const handleKeyPress = e => {
+        if(e.keyCode === 13){
+            handleNewQuery(e);
+        }
+    }
+
+
     // display the node names in the console (right click and inspect element)
-    console.log(nodeNames);
+    // console.log(nodeNames);
 
     return (
         <div>
@@ -45,6 +53,7 @@ export default function NewQuery() {
                         type="text"
                         value={val}
                         onChange={(e) => setVal(e.target.value)}
+                        onKeyDown={handleKeyPress}
                     />
                 </form>
             </div>

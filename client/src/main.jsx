@@ -9,6 +9,7 @@ import QueryPage from "./pages/QueryPage.jsx";
 import TOSPage from "./pages/TOSPage.jsx";
 import FAQPage from "./pages/FAQPage.jsx";
 import NewPage from "./pages/NewPage.jsx";
+import ProGoPage from "./pages/ProGoPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,13 @@ const router = createBrowserRouter([
     path: "/newpage",
     element: <NewPage />,
     errorElement: <ErrorPage />,
+  }
+  ,
+  {
+    path: "/progo",
+    element: <ProGoPage />,
+    errorElement: <ErrorPage />,
+
   }
 ]);
 

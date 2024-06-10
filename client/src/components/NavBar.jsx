@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaInfo, FaHome, FaSearch } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { Im500Px } from "react-icons/im";
+import { SlShare } from "react-icons/sl";
 
 export default function NavBar() {
   return (
@@ -62,6 +63,20 @@ export default function NavBar() {
                 <Im500Px />
               </IconContext.Provider>
               <div>New</div>
+            </button>
+          </Link>
+        </li>
+        <li>
+          <Link to={`/progo`}>
+            <button className="navbar-menu-button">
+              <IconContext.Provider
+                value={{
+                  size: "1.5em",
+                }}
+              >
+                <SlShare />
+              </IconContext.Provider>
+              <div>ProGo</div>
             </button>
           </Link>
         </li>

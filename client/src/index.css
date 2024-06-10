@@ -1484,12 +1484,48 @@ select {
 }
 
 .new-query-form {
-  display:flex;
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
 }
 
 .new-query-label {
   background-color: white;
   color: black;
-  font-size: x-large;
+  font-size: large;
+  padding-bottom: 10px;
+}
+
+.go-input-form {
+  color: black;
+  /* border: 10px solid black; */
+  display: flex;
+  flex-direction: column;
+}
+
+.go-results-container {
+  height: 100%;
+  position: relative;
+  margin-top: 20px;
+  /* margin-left: -15px; */
+  color: black;
+  /* border: 10px solid black; */
+}
+
+.go-results-wrapper {
+  display: flex;
+  flex-direction:row;
+  /* border: 10px solid black; */
+  position: relative;
+}
+
+.progo-output-box {
+  border-radius: 8px;
+  border: 2px solid black;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: #1a1a1a;
+  transition: border-color 0.25s;
+  color: white;
 }
