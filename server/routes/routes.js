@@ -17,6 +17,8 @@ import GoFinderService from "../services/go.finder.service.js";
 import AvgDegreeService from "../services/avg.degree.service.js";
 import HighDegreeProteins from "../services/API_test.js";
 import PostTst from "../services/API_Post.js";
+import PGService from "../services/PG.service.js"
+import PGStats from "../services/PG.Stats.service.js";
 
 const router = new Router();
 const jsonParser = bodyParser.json();
@@ -57,6 +59,7 @@ router.get("/API_test", jsonParser, async (req, res, next) => {
 
 router.post("/API_Post", jsonParser, async (req, res, next) => {
   try {
+    
     const data = req.body;
     const k = data.k
     const tst = new PostTst(getDriver());
@@ -64,8 +67,41 @@ router.post("/API_Post", jsonParser, async (req, res, next) => {
     const degrees = await tst.MakePostTst(k);
     console.log("Degree:");
     console.log(degrees);
-
     res.json(degrees);
+  }
+  catch (e) {
+    next(e);
+  }
+});
+
+
+router.post("/ProGoCounter", jsonParser, async (req, res, next) => {
+  try {
+    const data = req.body;
+    const GoID = data.id;
+    const PGI = new PGService(getDriver());
+    // console.log(GoID);
+    const edges = await PGI.ProGo(GoID)
+    console.log("ProGo Edges:");
+    console.log(edges);
+    res.json(edges);
+  }
+  catch (e) {
+    next(e);
+  }
+});
+
+
+router.post("/PGStats", jsonParser, async (req, res, next) => {
+  try {
+    const data = req.body;
+    const GoName = data.GoName.name;
+    console.log("-----------GoName-------------\n",GoName)
+    const PGS = new PGStats(getDriver());
+    const edges = await PGS.ProGoStats(GoName);
+    console.log("ProGo Edges:");
+    console.log(edges);
+    res.json(edges);
   }
   catch (e) {
     next(e);

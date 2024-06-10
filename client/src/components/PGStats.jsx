@@ -28,7 +28,7 @@ export default function PGStats(name) {
 
     return (
         <div>
-            GO Term Protein Interactions: {count}
+            &nbsp;&nbsp;&nbsp;GO Term Protein Interactions: {count}
         </div>
     )
 
